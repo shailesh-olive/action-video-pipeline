@@ -7,10 +7,10 @@
 import torch
 from torch import nn
 
-from tactix.tracker.reid.config import configurable
-from tactix.tracker.reid.modeling.backbones import build_backbone
-from tactix.tracker.reid.modeling.heads import build_heads
-from tactix.tracker.reid.modeling.losses import *
+from reid.config import configurable
+from reid.modeling.backbones import build_backbone
+from reid.modeling.heads import build_heads
+from reid.modeling.losses import *
 from .build import META_ARCH_REGISTRY
 
 

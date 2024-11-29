@@ -1,6 +1,6 @@
 import torch
 
-from tactix.tracker.reid.utils.registry import Registry
+from reid.utils.registry import Registry
 
 META_ARCH_REGISTRY = Registry("META_ARCH")  # noqa F401 isort:skip
 META_ARCH_REGISTRY.__doc__ = """

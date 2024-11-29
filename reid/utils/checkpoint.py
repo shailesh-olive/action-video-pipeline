@@ -11,7 +11,7 @@ import torch.nn as nn
 from termcolor import colored
 from torch.nn.parallel import DistributedDataParallel, DataParallel
 
-from tactix.tracker.reid.utils.file_io import PathManager
+from reid.utils.file_io import PathManager
 
 
 class _IncompatibleKeys(

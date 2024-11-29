@@ -10,18 +10,18 @@ import math
 import torch
 from torch import nn
 
-from tactix.tracker.reid.layers import (
+from reid.layers import (
     IBN,
     SELayer,
     Non_local,
     get_norm,
 )
-from tactix.tracker.reid.utils.checkpoint import (
+from reid.utils.checkpoint import (
     get_missing_parameters_message,
     get_unexpected_parameters_message,
 )
 from .build import BACKBONE_REGISTRY
-from tactix.tracker.reid.utils import comm
+from reid.utils import comm
 
 
 logger = logging.getLogger(__name__)

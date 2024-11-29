@@ -9,11 +9,11 @@ import torch.nn.functional as F
 from tqdm import tqdm
 
 from config import settings
-from utils.model_utils import Model
+from utils.models import Model
 from utils.tracker_utils.core import image_track, setup_cfg
 from reid.utils.build import build_model
 
-from base import BaseTask
+from .base import BaseTask
 from utils.tracker_utils.bot_sort import BoTSORT
 from utils.tracker_utils.jersey_ocr import JerseyOCR
 

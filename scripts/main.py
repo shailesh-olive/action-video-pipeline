@@ -1,8 +1,8 @@
 import torch
 import supervision as sv
-from preprocessor import run_preprocess
+from .preprocessor import run_preprocess
 
-from track import PlayerTracker
+from .track import PlayerTracker
 
 
 model = "yolo"

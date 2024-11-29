@@ -1,7 +1,7 @@
 import numpy as np
 import torch.nn.functional as F
-from seperated_player_label.tracker_utils.bot_sort import BoTSORT
-from seperated_player_label.reid.config import get_cfg
+from .bot_sort import BoTSORT
+from reid.config import get_cfg
 
 
 def nms_fast(boxes, probs=None, overlap_thresh=0.3):

@@ -1,8 +1,8 @@
 import numpy as np
 
-from scripts.track import matching
-from basetrack import BaseTrack, TrackState
-from kalman_filter import KalmanFilter
+from .matching import *
+from .basetrack import BaseTrack, TrackState
+from .kalman_filter import KalmanFilter
 
 from copy import deepcopy
 from collections import defaultdict
@@ -342,11 +342,11 @@ class BoTSORT(object):
         STrack.multi_predict(strack_pool)
 
         # Associate with high score detection boxes
-        ious_dists = matching.iou_distance(strack_pool, detections)
+        ious_dists = iou_distance(strack_pool, detections)
         ious_dists_mask = ious_dists > self.proximity_thresh
 
         if self.with_reid:
-            emb_dists = matching.embedding_distance(strack_pool, detections) / 2.0
+            emb_dists = embedding_distance(strack_pool, detections) / 2.0
             emb_dists[emb_dists > self.appearance_thresh] = 1.0
             emb_dists[ious_dists_mask] = 1.0
             # dists = np.minimum(ious_dists, emb_dists)
@@ -354,7 +354,7 @@ class BoTSORT(object):
         else:
             dists = ious_dists
 
-        matches, u_track, u_detection = matching.linear_assignment(
+        matches, u_track, u_detection = linear_assignment(
             dists, thresh=match_thresh
         )
 
@@ -398,8 +398,8 @@ class BoTSORT(object):
             for i in u_track
             if strack_pool[i].state == TrackState.Tracked
         ]
-        dists = matching.iou_distance(r_tracked_stracks, detections_second)
-        matches, u_track, u_detection_second = matching.linear_assignment(
+        dists = iou_distance(r_tracked_stracks, detections_second)
+        matches, u_track, u_detection_second = linear_assignment(
             dists, thresh=0.5
         )
         for itracked, idet in matches:
@@ -420,11 +420,11 @@ class BoTSORT(object):
 
         """Deal with unconfirmed tracks, usually tracks with only one beginning frame"""
         detections = [detections[i] for i in u_detection]
-        ious_dists = matching.iou_distance(unconfirmed, detections)
+        ious_dists = iou_distance(unconfirmed, detections)
         ious_dists_mask = ious_dists > self.proximity_thresh
 
         if self.with_reid:
-            emb_dists = matching.embedding_distance(unconfirmed, detections) / 2.0
+            emb_dists = embedding_distance(unconfirmed, detections) / 2.0
             emb_dists[emb_dists > self.appearance_thresh] = 1.0
             emb_dists[ious_dists_mask] = 1.0
             # dists = np.minimum(ious_dists, emb_dists)
@@ -433,7 +433,7 @@ class BoTSORT(object):
         else:
             dists = ious_dists
 
-        matches, u_unconfirmed, u_detection = matching.linear_assignment(
+        matches, u_unconfirmed, u_detection = linear_assignment(
             dists, thresh=0.7
         )
         for itracked, idet in matches:
@@ -744,7 +744,7 @@ def sub_stracks(tlista, tlistb):
 
 
 def remove_duplicate_stracks(stracksa, stracksb):
-    pdist = matching.iou_distance(stracksa, stracksb)
+    pdist = iou_distance(stracksa, stracksb)
     pairs = np.where(pdist < 0.15)
     dupa, dupb = list(), list()
     for p, q in zip(*pairs):

@@ -8,10 +8,10 @@ import torch
 import torch.nn.functional as F
 from torch import nn
 
-from tactix.tracker.reid.config import configurable
-from tactix.tracker.reid.layers import *
-from tactix.tracker.reid.layers import pooling, any_softmax
-from tactix.tracker.reid.layers.weight_init import weights_init_kaiming
+from reid.config import configurable
+from reid.layers import *
+from reid.layers import pooling, any_softmax
+from reid.layers.weight_init import weights_init_kaiming
 from .build import REID_HEADS_REGISTRY
 
 

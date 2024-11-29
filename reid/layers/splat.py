@@ -9,7 +9,7 @@ import torch.nn.functional as F
 from torch import nn
 from torch.nn import Conv2d, ReLU
 from torch.nn.modules.utils import _pair
-from tactix.tracker.reid.layers import get_norm
+from reid.layers import get_norm
 
 
 class SplAtConv2d(nn.Module):

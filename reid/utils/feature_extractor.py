@@ -4,10 +4,10 @@ import torch
 import torchvision.transforms as T
 from PIL import Image
 
-from tactix.tracker.reid.utils.tools import check_isfile
-from tactix.tracker.reid.utils.torchtools import load_pretrained_weights
-from tactix.tracker.reid.models import build_model
-from tactix.tracker.reid.utils.model_complexity import compute_model_complexity
+from reid.utils.tools import check_isfile
+from reid.utils.torchtools import load_pretrained_weights
+from reid.models import build_model
+from reid.utils.model_complexity import compute_model_complexity
 
 
 class FeatureExtractor(object):

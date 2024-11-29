@@ -4,12 +4,22 @@ version = "0.1.0"
 description = "Create short clip of palyer centric using tracking info for annotation"
 authors = ["Shailesh <shailesh.adhikari@olivegroup.io>"]
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.10"
 torch = "^2.5.1"
-supervision = "^0.25.0"
 tqdm = "^4.67.1"
+dynaconf = "^3.2.6"
+yacs = "^0.1.8"
+termcolor = "^2.5.0"
+ultralytics = "^8.3.39"
+supervision = "0.23.0"
+lapx = "^0.5.11"
+easyocr = "^1.7.2"
+craft = {git = "https://github.com/boomb0om/CRAFT-text-detection/"}
+huggingface-hub = "0.24.7"
+scikit-learn = "^1.5.2"
 
 
 [build-system]
