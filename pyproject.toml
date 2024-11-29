@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "player-centric-video-annotation"
+version = "0.1.0"
+description = "Create short clip of palyer centric using tracking info for annotation"
+authors = ["Shailesh <shailesh.adhikari@olivegroup.io>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+torch = "^2.5.1"
+supervision = "^0.25.0"
+tqdm = "^4.67.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

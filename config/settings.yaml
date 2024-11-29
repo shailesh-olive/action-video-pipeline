@@ -1,0 +1,19 @@
+models:
+  yolo:
+    nfl:
+      player: modeldir/players/best11.pt
+      pitch: modeldir/keypoints/best27.pt
+  sam:
+    nfl:
+      segment: sam2_b.pt
+  osnet:
+    track: modeldir/tracking/track.tar-60
+  resnet:
+    config: reid/config/sbs_R50-ibn.yml
+    model_path: modeldir/tracking/model_best.pth
+
+infer:
+  keypoint:
+    conf_thres: 0.8
+  detection:
+    conf_thres: 0.8
